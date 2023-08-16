@@ -32,6 +32,7 @@ def vulnerable_server():
     is_it_up = is_server_up()
     if not is_it_up:
         starting_up = True
+        mp.set_start_method('fork')
         mp.Process(
             target=spin_up_server,
         ).start()
